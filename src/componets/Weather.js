@@ -6,7 +6,7 @@ import WeatherExtraInfo from './WeatherExtraInfo';
 
 import './Weather.css'
 
-const API_endpoint = `http://api.weatherapi.com/v1/current.json`
+const API_endpoint = `https://api.weatherapi.com/v1/current.json`
 const API_key = `490d16b8108944d9bfd155947220204`
 
 const Weather = () => {
