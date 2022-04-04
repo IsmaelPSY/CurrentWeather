@@ -11,7 +11,7 @@ const API_key = `490d16b8108944d9bfd155947220204`
 
 const Weather = () => {
 
-  const [currentWeather,setCurrentWeather] = useState({})
+//   const [currentWeather,setCurrentWeather] = useState({})
   const [location,setLocation] = useState({})
   const [condition,setCondition] = useState({})
   const [temperatureCelcius,setTemperatureCelcius] = useState('')
@@ -27,7 +27,7 @@ const Weather = () => {
      
       axios.get(`${API_endpoint}?key=${API_key}&q=${latitude},${longitude}`)
       .then(response => {
-        setCurrentWeather(response.data.current)
+        // setCurrentWeather(response.data.current)
         setLocation(response.data.location)
         setCondition(response.data.current.condition)
         setTemperatureCelcius(`${response.data.current.temp_c}°C`)
