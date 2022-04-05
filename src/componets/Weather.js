@@ -9,6 +9,26 @@ import './Weather.css'
 const API_endpoint = `https://api.weatherapi.com/v1/current.json`
 const API_key = `490d16b8108944d9bfd155947220204`
 
+function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        alert("User denied the request for Geolocation.")
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.")
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.")
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.")
+        break;
+        default:
+            alert("Error")
+            break;
+    }
+  }
+
 const Weather = () => {
 
 //   const [currentWeather,setCurrentWeather] = useState({})
@@ -20,6 +40,9 @@ const Weather = () => {
   const [temperature,setTemperature] = useState('')
 
   useEffect(()=>{
+    
+    if(!navigator.geolocation) alert('Geolocation is not supported by this browser.')
+
     navigator.geolocation.getCurrentPosition((position)=>{
   
       const latitude = position.coords.latitude
@@ -37,7 +60,7 @@ const Weather = () => {
       .catch(err =>{
         console.log(err)
       })
-    })
+    },showError)
   },[])
   
   
